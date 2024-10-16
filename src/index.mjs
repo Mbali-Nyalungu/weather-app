@@ -1,11 +1,11 @@
 const form = document.getElementById("city-form");
 const cityInput = document.getElementById("city-input");
 const cityName = document.getElementById("city-name");
-const temperatureElement = document.getElementById("temperature");
+const temperatureElement = document.querySelector(".sun");
 
-const defaultCity = "Paris"; // Default city
-const defaultOffset = 0; // Default timezone offset
-const apiKey = "b0bct32424950fe6524aodcf40a33f25"; // Replace with your secure API key
+const defaultCity = "Paris";
+const defaultOffset = 0;
+const apiKey = "b0bct32424950fe6524aodcf40a33f25";
 
 function displayCurrentDateTime(offset) {
   const now = new Date();
@@ -16,21 +16,20 @@ function displayCurrentDateTime(offset) {
   const formattedDate = date.toLocaleString(undefined, options);
 
   document.getElementById("current-date").textContent =
-    formattedDate.split(",")[0]; // Day
+    formattedDate.split(",")[0];
   document.getElementById("local-time").textContent =
-    formattedDate.split(",")[1]; // Time
+    formattedDate.split(",")[1];
 }
 
 function displayForecast(response) {
   const city = response.data.city;
-  const country = response.data.country;
-  const forecast = response.data.daily[0]; // Get today's forecast
 
-  cityName.textContent = `${city}, ${country}`;
+  const forecast = response.data.daily[0];
+
+  cityName.textContent = `${city}`;
   const temperature = Math.round(forecast.temperature.day);
-  const description = forecast.condition.description;
 
-  temperatureElement.innerHTML = `The forecast temperature for today is ${temperature}°C (${description}).`;
+  temperatureElement.innerHTML = `☀️ ${temperature}°C `;
 }
 
 function fetchForecast(city) {
@@ -55,12 +54,11 @@ form.addEventListener("submit", function (event) {
 
   if (city) {
     fetchForecast(city);
-    cityInput.value = ""; // Clear input after search
+    cityInput.value = "";
   } else {
     alert("Please enter a valid city name.");
   }
 });
 
-// Initialize with the default city
 fetchForecast(defaultCity);
 displayCurrentDateTime(defaultOffset);
