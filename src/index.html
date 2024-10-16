@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Weather App</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Include Axios -->
+    <script src="index.mjs" defer></script>
+    <!-- Use defer to ensure the script loads after HTML -->
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <form id="city-form">
+          <input
+            class="search"
+            type="search"
+            placeholder="Enter a city..."
+            required
+            aria-label="City search"
+            id="city-input"
+          />
+          <input class="submit" type="submit" value="Search" />
+          <hr />
+        </form>
+      </header>
+      <main>
+        <div class="current-weather">
+          <div>
+            <h1 id="city-name">Paris</h1>
+            <p id="weather-info">
+              <span id="current-date">Saturday</span>
+              <span id="local-time">15:32</span>, moderate rain <br />
+              Humidity: <strong>87%</strong>, Wind: <strong>7.2 km/h</strong>
+            </p>
+            <p id="temperature"></p>
+            <!-- Temperature element -->
+          </div>
+          <div class="sun">☀️ 14°C</div>
+        </div>
+      </main>
+      <footer>
+        <p>
+          This project was coded by
+          <a href="#" target="_blank">Mbali Nyalungu</a> and is
+          <a href="#" target="_blank"> on GitHub</a> and
+          <a href="#" target="_blank"> hosted on Netlify</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
